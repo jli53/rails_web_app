@@ -8,6 +8,9 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", help_path
     assert_select "a[href=?]", about_path
     assert_select "a[href=?]", contact_path
+    assert_select "a[href=?]", login_path
+    log_in_as(users(:michael))
+    assert_select "a[href=?]", login_path, count: 0 
   end
   # test "the truth" do
   #   assert true
